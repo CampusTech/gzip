@@ -1,8 +1,9 @@
-module github.com/gin-contrib/gzip
+module github.com/CampusTech/gzip
 
 go 1.21.0
 
 require (
+	github.com/gin-contrib/gzip v1.1.0
 	github.com/gin-gonic/gin v1.10.0
 	github.com/stretchr/testify v1.10.0
 )
