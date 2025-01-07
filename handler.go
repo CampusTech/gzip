@@ -59,7 +59,12 @@ func (g *gzipHandler) Handle(c *gin.Context) {
 			gz.Reset(io.Discard)
 		}
 		gz.Close()
-		c.Header("Content-Length", fmt.Sprint(c.Writer.Size()))
+		if c.Writer.Size() > 0 {
+			c.Header("Content-Length", fmt.Sprint(c.Writer.Size()))
+		} else {
+			c.Writer.Header().Del("Content-Encoding")
+			c.Header("Content-Length", "0")
+		}
 	}()
 	c.Next()
 }
